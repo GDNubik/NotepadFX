@@ -1,0 +1,23 @@
+[changelog]
+
+export GIT_CLIFF__CHANGELOG__FOOTER="<!-- сгенерировано при помощи git-cliff -->"
+
+[git]
+
+commit_parsers = [
+    { message = "^feat", group = "<!-- 0 -->Новые функции" },
+    { message = "^fix", group = "<!-- 1 -->Исправления ошибок" },
+    { message = "^doc", group = "<!-- 3 -->Документация" },
+    { message = "^perf", group = "<!-- 4 -->Улучшение производительности" },
+    { message = "^refactor", group = "<!-- 2 -->Рефакторинг" },
+    { message = "^style", group = "<!-- 5 -->Форматирование кода" },
+    { message = "^test", group = "<!-- 6 -->Тестирование" },
+    { message = "^chore\\(release\\): prepare for", skip = true },
+    { message = "^chore\\(deps.*\\)", skip = true },
+    { message = "^chore\\(pr\\)", skip = true },
+    { message = "^chore\\(pull\\)", skip = true },
+    { message = "^chore|^ci", group = "<!-- 7 -->Обслуживание" },
+    { body = ".*security", group = "<!-- 8 -->Безопасность" },
+    { message = "^revert", group = "<!-- 9 -->Откат изменений" },
+    { message = ".*", group = "<!-- 10 -->Прочее" },
+]
