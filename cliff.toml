@@ -1,6 +1,8 @@
 [changelog]
 
-export GIT_CLIFF__CHANGELOG__FOOTER="<!-- сгенерировано при помощи git-cliff -->"
+header = "# Changelog\n\nВсе существенные изменения в этом проекте будут записаны в этом файле.\n\n"
+
+footer = "<!-- сгенерировано с помощью git-cliff -->"
 
 [git]
 
@@ -16,8 +18,9 @@ commit_parsers = [
     { message = "^chore\\(deps.*\\)", skip = true },
     { message = "^chore\\(pr\\)", skip = true },
     { message = "^chore\\(pull\\)", skip = true },
-    { message = "^chore|^ci", group = "<!-- 7 -->Обслуживание" },
-    { body = ".*security", group = "<!-- 8 -->Безопасность" },
-    { message = "^revert", group = "<!-- 9 -->Откат изменений" },
-    { message = ".*", group = "<!-- 10 -->Прочее" },
+    { message = "^chore", group = "<!-- 7 -->Рутина" },
+    { message = "^ci", group = "<!-- 8 -->CI/CD" },
+    { body = ".*security", group = "<!-- 9 -->Безопасность" },
+    { message = "^revert", group = "<!-- 10 -->Откат изменений" },
+    { message = ".*", group = "<!-- 11 -->Прочее" },
 ]
