@@ -7,6 +7,7 @@
 ### Рутина
 
 - Релиз
+- *(repo)* Добавлен файл .gitattributes с правилами export-ignore
 
 ### CI/CD
 
