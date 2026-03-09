@@ -24,3 +24,5 @@ commit_parsers = [
     { message = "^revert", group = "<!-- 10 -->Откат изменений" },
     { message = ".*", group = "<!-- 11 -->Прочее" },
 ]
+
+filter_unconventional = true
