@@ -13,5 +13,6 @@
 
 - *(changelog)* Добавлена конфигурация для генерации changelog на русском языке
 - *(changelog)* Исправлены header и footer, а также добавлена новая категория commit-ов в конфигурации changelog
+- *(changelog)* Добавлена настройка filter_unconventional в конфигурации changelog
 
 <!-- сгенерировано с помощью git-cliff -->
