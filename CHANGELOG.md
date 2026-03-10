@@ -8,6 +8,7 @@
 
 - Релиз
 - *(repo)* Добавлен файл .gitattributes с правилами export-ignore
+- *(repo)* Добавлен файл CHANGELOG.md в .gitattributes с правилом export-ignore
 
 ### CI/CD
 
