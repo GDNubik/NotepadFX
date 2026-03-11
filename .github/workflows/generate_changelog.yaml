@@ -4,8 +4,12 @@ on:
   push: 
     branches:
       - main  
+  delete:
+    tags: 
+      - '*'
   release:
-    types: [published]
+    types: [published, prereleased]
+  workflow_dispatch:
 
 jobs: 
   build:
