@@ -26,7 +26,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Файл">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#saveTextToFile" text="Сохранить" />
+              <MenuItem fx:id="saveText" mnemonicParsing="false" onAction="#saveText" text="Сохранить" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveTextAs" text="Сохранить как..." />
                   <MenuItem mnemonicParsing="false" onAction="#openTextFile" text="Загрузить" />
             </items>
           </Menu>

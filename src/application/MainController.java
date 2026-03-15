@@ -56,6 +56,9 @@ public class MainController {
     @FXML
     private Menu exit;
 
+    @FXML
+    private MenuItem saveText;
+
     private File pathtofile;
 
     private static final Map<Character, Character> RUS_TO_ENG = new HashMap<>();
@@ -105,6 +108,8 @@ public class MainController {
 
         undo.disableProperty().bind(textArea.undoableProperty().not());
         redo.disableProperty().bind(textArea.redoableProperty().not());
+
+        saveText.setDisable(true);
 
         ContextMenu rightButtonMenu = new ContextMenu();
 
@@ -194,9 +199,26 @@ public class MainController {
 
         positionLabel.setText("Строка " + line + ", столбец " + column);
     }
+    
+    @FXML
+    private void saveText(ActionEvent event) {
+        try {
+            if (pathtofile != null) {
+                savingTextFile(pathtofile);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText(e.toString());
+
+            alert.showAndWait();
+        }
+    }
 
     @FXML
-    private void saveTextToFile(ActionEvent event) {
+    private void saveTextAs(ActionEvent event) {
         try {
             FileChooser fileChooser = new FileChooser();
 
@@ -213,16 +235,7 @@ public class MainController {
             File file = fileChooser.showSaveDialog(textArea.getScene().getWindow());
             
             if (file != null) {
-                String content = textArea.getText();
-                Files.write(
-                    Paths.get(file.getAbsolutePath()),
-                    content.getBytes(StandardCharsets.UTF_8)
-                );
-
-                pathtofile = file;
-
-                Stage stage = (Stage) textArea.getScene().getWindow();
-                stage.setTitle(file.getName() + " - NotepadFX");
+                savingTextFile(file);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -233,6 +246,22 @@ public class MainController {
 
             alert.showAndWait();
         }
+    }
+
+    private void savingTextFile(File file) throws Exception { 
+        String content = textArea.getText();
+
+        Files.write(
+            Paths.get(file.getAbsolutePath()),
+            content.getBytes(StandardCharsets.UTF_8)
+        );
+
+        Stage stage = (Stage) textArea.getScene().getWindow();
+        stage.setTitle(file.getName() + " - NotepadFX");
+
+        pathtofile = file;
+
+        saveText.setDisable(false);
     }
 
     private String detectCharset(File file) {
@@ -326,6 +355,8 @@ public class MainController {
         stage.setTitle(file.getName() + " - NotepadFX");
 
         pathtofile = file;
+
+        saveText.setDisable(false);
     }
 
     @FXML
@@ -341,7 +372,7 @@ public class MainController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == YesButtonType){
-            saveTextToFile(null);
+            saveTextAs(null);
             Platform.exit();
         } else if (result.get() == NoButtonType){
             Platform.exit();
