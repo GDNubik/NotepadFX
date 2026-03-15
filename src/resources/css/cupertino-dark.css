@@ -1086,3 +1086,88 @@
 .tool-bar > .tool-bar-overflow-button .menu-item:hover {
     -fx-background-color: transparent;
 }
+
+.context-menu > .scroll-arrow {
+  -fx-padding: 0.5em;
+  -fx-background-color: transparent;
+}
+.context-menu > .scroll-arrow:hover {
+  -fx-background-color: -color-accent-emphasis;
+  -fx-text-fill: -color-fg-emphasis;
+}
+
+.modal-pane > .scroll-pane > .viewport > * > .scrollable-content {
+  -fx-background-color: -color-modal-pane-overlay;
+}
+.modal-pane > .scroll-pane > .scroll-bar {
+  -fx-opacity: 1;
+}
+
+.scroll-bar {
+  -fx-background-color: -color-border-subtle;
+  -fx-opacity: 0.5;
+}
+.scroll-bar > .thumb {
+  -fx-background-color: -color-fg-muted;
+  -fx-background-radius: 6px;
+}
+.scroll-bar > .track {
+  -fx-background-color: transparent;
+  -fx-border-radius: 0;
+}
+.scroll-bar > .increment-button {
+  visibility: hidden;
+  -fx-managed: false;
+}
+.scroll-bar > .increment-button > .increment-arrow {
+  -fx-shape: " ";
+  -fx-padding: 0;
+}
+.scroll-bar > .decrement-button {
+  visibility: hidden;
+  -fx-managed: false;
+}
+.scroll-bar > .decrement-button > .decrement-arrow {
+  -fx-shape: " ";
+  -fx-padding: 0;
+}
+.scroll-bar:horizontal {
+  -fx-pref-height: 8px;
+}
+.scroll-bar:vertical {
+  -fx-pref-width: 8px;
+}
+.scroll-bar:hover, .scroll-bar:pressed, .scroll-bar:focused {
+  -fx-opacity: 1;
+}
+
+.scroll-pane {
+  -fx-background-color: transparent;
+  -fx-background-insets: 0;
+  -fx-background-radius: 0;
+  -fx-padding: 0;
+}
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+.scroll-pane > .corner {
+  -fx-background-color: -color-border-subtle;
+  -fx-opacity: 0.5;
+}
+
+.scroll-pane:disabled > .scroll-bar {
+  -fx-opacity: 0.25;
+}
+
+.text-area:disabled > .scroll-pane {
+  -fx-opacity: 1;
+}
+
+.text-area .scroll-pane {
+  -fx-background-color: transparent;
+  -fx-background-insets: 0;
+}
+
+.text-area .scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
