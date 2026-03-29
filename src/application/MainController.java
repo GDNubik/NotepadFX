@@ -60,7 +60,7 @@ public class MainController {
     @FXML
     private MenuItem saveText;
 
-    private File pathtofile;
+    private File pathToFile;
 
     private static final Map<Character, Character> RUS_TO_ENG = new HashMap<>();
     private static final Map<Character, Character> ENG_TO_RUS = new HashMap<>();
@@ -206,8 +206,8 @@ public class MainController {
     @FXML
     private void saveText(ActionEvent event) {
         try {
-            if (pathtofile != null) {
-                savingTextFile(pathtofile);
+            if (pathToFile != null) {
+                savingTextFile(pathToFile);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -230,9 +230,9 @@ public class MainController {
                 new FileChooser.ExtensionFilter("Все файлы", "*.*")
             );
 
-            if (pathtofile != null && pathtofile.getParentFile().exists()) {
-                fileChooser.setInitialDirectory(pathtofile.getParentFile());
-                fileChooser.setInitialFileName(pathtofile.getName());
+            if (pathToFile != null && pathToFile.getParentFile().exists()) {
+                fileChooser.setInitialDirectory(pathToFile.getParentFile());
+                fileChooser.setInitialFileName(pathToFile.getName());
             }
             
             File file = fileChooser.showSaveDialog(textArea.getScene().getWindow());
@@ -262,7 +262,7 @@ public class MainController {
         Stage stage = (Stage) textArea.getScene().getWindow();
         stage.setTitle(file.getName() + " - NotepadFX");
 
-        pathtofile = file;
+        pathToFile = file;
 
         saveText.setDisable(false);
     }
@@ -357,7 +357,7 @@ public class MainController {
         Stage stage = (Stage) textArea.getScene().getWindow();
         stage.setTitle(file.getName() + " - NotepadFX");
 
-        pathtofile = file;
+        pathToFile = file;
 
         saveText.setDisable(false);
     }
