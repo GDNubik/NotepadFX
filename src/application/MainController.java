@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -104,7 +105,7 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        textArea.caretPositionProperty().addListener((obs, oldPos, newPos) -> updateCursorPosition());
+        textArea.caretPositionProperty().addListener((obs, oldPos, newPos) -> updateCursorPosition(newPos.intValue()));
 
         undo.disableProperty().bind(textArea.undoableProperty().not());
         redo.disableProperty().bind(textArea.redoableProperty().not());
@@ -142,7 +143,7 @@ public class MainController {
         textArea.setOnContextMenuRequested(event -> {
 
             boolean hasSelection = textArea.getSelection().getLength() > 0;
-            boolean hasText = !textArea.getText().isEmpty();
+            boolean hasText = textArea.getLength() > 0;
             boolean canEdit = textArea.isEditable();
             boolean allSelected = textArea.getSelection().getLength() == textArea.getLength();
 
@@ -180,22 +181,24 @@ public class MainController {
         });
     }
 
-    private void updateCursorPosition() {
-        int caret = textArea.getCaretPosition();
-        String text = textArea.getText();
-
+    private void updateCursorPosition(int caret) {
+        ObservableList<CharSequence> paragraphs = textArea.getParagraphs();
+        
         int line = 1;
-        int lastNewLineIndex = -1;
-        int limit = Math.min(caret, text.length());
+        int charsCounted = 0;
+        int column = 1;
 
-        for (int i = 0; i < limit; i++) {
-            if (text.charAt(i) == '\n') {
-                line++;
-                lastNewLineIndex = i;
+        for (CharSequence paragraph : paragraphs) {
+            int pLength = paragraph.length();
+            
+            if (caret <= charsCounted + pLength) {
+                column = caret - charsCounted + 1;
+                break;
             }
+            
+            charsCounted += pLength + 1;
+            line++;
         }
-
-        int column = caret - lastNewLineIndex;
 
         positionLabel.setText("Строка " + line + ", столбец " + column);
     }
