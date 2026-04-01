@@ -1,0 +1,16 @@
+This software uses the following third-party libraries:
+
+=========================================================================
+
+1. JavaFX 25.0.1 (https://github.com/openjdk/jfx)
+   License: GNU GPL v2 with Classpath Exception
+   Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
+
+2. juniversalchardet 2.5.0 (https://github.com/albfernandez/juniversalchardet)
+   License: Mozilla Public License 1.1 (chosen from Tri-license: GPL/LGPL/MPL)
+   Copyright (c) 2002-2005, Netscape Communications Corporation.
+   Portions copyright (c) 2007-2024, Alberto Fernández.
+
+3. AtlantaFX Themes 2.1.0 (https://github.com/mkpaz/atlantafx)
+   License: MIT License
+   Copyright (c) 2022-2025, Manolo Pazos.
