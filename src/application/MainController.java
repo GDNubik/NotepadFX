@@ -226,13 +226,7 @@ public class MainController {
                 savingTextFile(pathToFile);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText(e.toString());
-
-            alert.showAndWait();
+            showError(e);
         }
     }
 
@@ -257,13 +251,7 @@ public class MainController {
                 savingTextFile(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText(e.toString());
-
-            alert.showAndWait();
+            showError(e);
         }
     }
 
@@ -338,13 +326,7 @@ public class MainController {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText(e.toString());
-
-            alert.showAndWait();
+            showError(e);
         }
     }
 
@@ -428,13 +410,7 @@ public class MainController {
             
             infoStage.show();
         } catch (Exception e) {
-            e.printStackTrace();
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText(e.toString());
-
-            alert.showAndWait();
+            showError(e);
         }
     }
 
@@ -464,5 +440,16 @@ public class MainController {
         textArea.replaceSelection(newText.toString());
         
         textArea.selectRange(start, start + newText.length());
+    }
+
+    private void showError(Exception e) {
+        e.printStackTrace();
+        
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Error");
+        alert.setContentText(e.toString());
+
+        alert.showAndWait();
     }
 }
