@@ -311,6 +311,9 @@ public class MainController {
                     openingTextFile(file);
                 } else {
                     Alert alert = new Alert(AlertType.WARNING);
+
+                    alert.getDialogPane().getStylesheets().add(getClass().getClassLoader().getResource("resources/css/cupertino-dark.css").toExternalForm());
+
                     alert.setTitle("Файл слишком большой");
                     alert.setHeaderText("Файл слишком большой,\nвы точно хотите его открыть?");
                     alert.setContentText("Если вы откроете этот файл, программа может зависнуть");
@@ -363,6 +366,9 @@ public class MainController {
     @FXML
     private void exitNotepad1() {
         Alert alert = new Alert(AlertType.CONFIRMATION);
+
+        alert.getDialogPane().getStylesheets().add(getClass().getClassLoader().getResource("resources/css/cupertino-dark.css").toExternalForm());
+
         alert.setTitle("Сохранить файл?");
         alert.setHeaderText("Сохранить файл перед выходом?");
 
@@ -446,6 +452,9 @@ public class MainController {
         e.printStackTrace();
         
         Alert alert = new Alert(AlertType.ERROR);
+
+        alert.getDialogPane().getStylesheets().add(getClass().getClassLoader().getResource("resources/css/cupertino-dark.css").toExternalForm());
+
         alert.setTitle("Error");
         alert.setHeaderText("Error");
         alert.setContentText(e.toString());

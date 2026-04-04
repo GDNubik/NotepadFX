@@ -26,9 +26,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class NotepadFX extends Application {
-    
+
+    URL css = getClass().getClassLoader().getResource("resources/css/cupertino-dark.css");
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
@@ -36,7 +39,7 @@ public class NotepadFX extends Application {
             
             Scene scene = new Scene(root);
 
-            scene.getStylesheets().add(getClass().getClassLoader().getResource("resources/css/cupertino-dark.css").toExternalForm());
+            scene.getStylesheets().add(css.toExternalForm());
             
             primaryStage.setTitle("NotepadFX");
             primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResource("resources/images/notepadfx_icon.png").toExternalForm()));
@@ -46,7 +49,13 @@ public class NotepadFX extends Application {
             
         } catch (IOException e) {
             e.printStackTrace();
+        
             Alert alert = new Alert(AlertType.ERROR);
+
+            if (css != null) {
+                alert.getDialogPane().getStylesheets().add(css.toExternalForm());
+            }
+
             alert.setTitle("Error");
             alert.setHeaderText("Error");
             alert.setContentText(e.toString());
