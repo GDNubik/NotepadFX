@@ -25,7 +25,6 @@ import javafx.scene.image.Image;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-import java.io.IOException;
 import java.net.URL;
 
 public class NotepadFX extends Application {
@@ -33,7 +32,7 @@ public class NotepadFX extends Application {
     URL css = getClass().getClassLoader().getResource("resources/css/cupertino-dark.css");
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("resources/fxml/Main.fxml"));
             
@@ -47,7 +46,7 @@ public class NotepadFX extends Application {
             
             primaryStage.show();
             
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         
             Alert alert = new Alert(AlertType.ERROR);
